@@ -66,7 +66,13 @@ export const Header = () => {
               className="flex items-center gap-3"
               whileHover={{ scale: 1.02 }}
             >
-              <img src={logo} alt="The Holiday" className="h-12 w-auto rounded-lg" />
+              <div className="bg-white p-1.5 rounded-lg shadow-lg ring-2 ring-accent/30">
+                <img src={logo} alt="The Holiday" className="h-10 w-auto rounded" />
+              </div>
+              <div className="hidden sm:block">
+                <span className="font-display text-xl font-bold text-foreground">The Holiday</span>
+                <span className="block text-[10px] text-accent font-medium tracking-wider uppercase">International Tours & Travels</span>
+              </div>
             </motion.a>
 
             {/* Desktop Navigation */}
@@ -82,8 +88,13 @@ export const Header = () => {
               ))}
             </nav>
 
-            {/* CTA Button */}
-            <div className="hidden lg:block">
+            {/* CTA Buttons */}
+            <div className="hidden lg:flex items-center gap-3">
+              <a href="/member-login">
+                <Button variant="outline" className="border-accent/50 text-foreground hover:bg-accent/10 font-medium">
+                  Member Login
+                </Button>
+              </a>
               <Button className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6 glow-accent">
                 Book Now
               </Button>
