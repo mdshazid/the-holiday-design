@@ -14,7 +14,136 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      member_profiles: {
+        Row: {
+          address: string | null
+          created_at: string
+          full_name: string
+          id: string
+          member_id: string | null
+          phone: string | null
+          plan_end_date: string | null
+          plan_id: string | null
+          plan_start_date: string | null
+          total_savings: number | null
+          total_spent: number | null
+          total_trips: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          address?: string | null
+          created_at?: string
+          full_name: string
+          id?: string
+          member_id?: string | null
+          phone?: string | null
+          plan_end_date?: string | null
+          plan_id?: string | null
+          plan_start_date?: string | null
+          total_savings?: number | null
+          total_spent?: number | null
+          total_trips?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          address?: string | null
+          created_at?: string
+          full_name?: string
+          id?: string
+          member_id?: string | null
+          phone?: string | null
+          plan_end_date?: string | null
+          plan_id?: string | null
+          plan_start_date?: string | null
+          total_savings?: number | null
+          total_spent?: number | null
+          total_trips?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "member_profiles_plan_id_fkey"
+            columns: ["plan_id"]
+            isOneToOne: false
+            referencedRelation: "membership_plans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      member_transactions: {
+        Row: {
+          amount: number
+          created_at: string
+          description: string | null
+          discount_amount: number | null
+          id: string
+          member_id: string
+          transaction_type: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          description?: string | null
+          discount_amount?: number | null
+          id?: string
+          member_id: string
+          transaction_type: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          description?: string | null
+          discount_amount?: number | null
+          id?: string
+          member_id?: string
+          transaction_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "member_transactions_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "member_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      membership_plans: {
+        Row: {
+          benefits: Json | null
+          created_at: string
+          description: string | null
+          duration_months: number
+          id: string
+          is_active: boolean | null
+          name: string
+          price: number
+        }
+        Insert: {
+          benefits?: Json | null
+          created_at?: string
+          description?: string | null
+          duration_months?: number
+          id?: string
+          is_active?: boolean | null
+          name: string
+          price: number
+        }
+        Update: {
+          benefits?: Json | null
+          created_at?: string
+          description?: string | null
+          duration_months?: number
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          price?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
